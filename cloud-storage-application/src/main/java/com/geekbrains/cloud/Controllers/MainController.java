@@ -13,6 +13,8 @@ public class MainController implements Initializable {
 
     private Net net;
     public ListView<String> view;
+
+    public ListView<String> clientView;
     public TextField input;
 
     private void readListFiles() {
@@ -28,12 +30,28 @@ public class MainController implements Initializable {
         }
     }
 
+    private void readClientListFiles() {
+        try {
+            clientView.getItems().clear();
+            Long filesCount = net.readLong();
+            for (int i = 0; i < filesCount; i++) {
+                String filename = net.readUtf();
+                clientView.getItems().addAll(filename);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private void read() {
         try {
             while (true) {
                 String command = net.readUtf();
                 if (command.equals("#list#")) {
                     readListFiles();
+                }
+                if (command.equals("#client-list#")){
+                    readClientListFiles();
                 }
             }
         } catch (Exception e) {
