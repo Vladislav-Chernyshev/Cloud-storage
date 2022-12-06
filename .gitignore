@@ -1,0 +1,4 @@
+.idea
+cloud-storage-application/target/
+cloud-storage-core/target/
+cloud-storage-server/target/
