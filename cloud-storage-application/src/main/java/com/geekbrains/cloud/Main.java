@@ -14,6 +14,7 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         Parent parent = FXMLLoader.load(getClass().getResource("main.fxml"));
         stage.setScene(new Scene(parent));
+        stage.setTitle("Cloud storage");
         stage.show();
     }
 
